@@ -1,0 +1,39 @@
+<html ng-app="ProductApp">
+    <head>
+        <title>Product</title>
+       
+        <script src="../../Scripts/angular.min.js"></script>
+        <script src="../../Scripts/persistence.js"></script>
+        <script src="../../Scripts/persistence.store.sql.js"></script>        
+        <script src="../../Scripts/persistence.store.websql.js"></script>
+        <script src="../../Scripts/persistence.store.memory.js"></script>
+
+        <script src="../../app.js"></script>
+        <script src="../../Controller/service.js"></script>        
+        <script src="../../Model/Model.js"></script>
+        <script src="../../Controller/controllerProduct.js"></script>
+        
+        
+    </head>
+    <body ng-init="">
+        
+        <div ng-controller="controllerProduct">
+            <form ng-submit="addProduct()">
+                <p>{{textString}}</p>
+            
+                <input type="text" ng-model="text_Name" placeholder="Nom de l'article" />
+                <input type="text" ng-model="text_Categories" placeholder="Nom de la catégories" />
+                <input type="submit" value="Ajouté"/>
+            </form>
+            <hr>
+            <ul>
+                <li ng-repeat="product in products">
+                    <span>{{product.Name}}</span>
+                    <span>{{product.Categories}}</span>
+                </li>
+            </ul>
+            
+            {{showError()}}
+        </div>
+    </body>
+</html>

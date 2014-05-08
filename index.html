@@ -1,0 +1,217 @@
+<html ng-app="ProductApp">
+  <head>
+    
+    <title>EasyLab</title>
+    
+ 	<link rel="stylesheet" href="Content/Styles/topcoat-mobile-dark.min.css" />
+	<link rel="stylesheet" href="Content/Styles/index.css" /> 
+    <!-- TopCoat Icon -->
+    <link rel="stylesheet" type="text/css" href="Content/font/icomatic.css">
+    <script type="text/javascript" src="Content/font/icomatic.js"></script>
+    <!-- Framework Angular + Controllers  -->
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/persistence.js"></script>
+    <script src="Scripts/persistence.store.sql.js"></script>        
+    <script src="Scripts/persistence.store.websql.js"></script>
+    <script src="Scripts/persistence.store.memory.js"></script>
+
+    <script src="app.js"></script>
+    <script src="Controller/service.js"></script>        
+    <script src="Model/Model.js"></script>
+    <script src="Controller/controllerMenu.js"></script>
+    <script src="Controller/controllerProduct.js"></script>
+	<script type="text/javascript" charset="utf-8" src="Scripts/phonegap-1.4.1.js"></script>
+	
+  </head>
+
+    <script>
+       
+    
+    </script>
+<body ng-controller="controllerMenu">
+	 
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <!--Sidebar content-->
+    </div>
+    <div class="span10">
+      <!--Body content-->
+    </div>
+  </div>
+</div>
+      
+    <div class="topcoat-navigation-bar">
+
+
+        <div class="topcoat-navigation-bar__item left quarter">
+                <a id="slide-menu-button" class="topcoat-icon-button--quiet slide-menu-button">
+                    <span class="topcoat-icon icomatic" style="width:50px;height:50px; font-size:35; line-height:2">listview</span>
+                </a>
+        </div>  
+        <div class="topcoat-navigation-bar__item center half">
+                <h1 class="topcoat-navigation-bar__title">Pixural EasyLab</h1>
+        </div>      
+        <div class="topcoat-navigation-bar__item right quarter">
+                <a class="topcoat-icon-button--quiet" onclick="alert('Search clicked')">
+                    <span class="topcoat-icon icomatic" style="width:50px;height:50px; font-size:35; line-height:2">search</span>
+                </a>
+        </div>        
+    </div>
+
+    <div class="topcoat-list" style="width:30%; float:left" >
+      <h3 class="topcoat-list__header">Menu</h3>
+      <ul class="topcoat-list__container">
+        <li class="topcoat-list__item" ref="div-Product" ng-click="ShowProduct()">
+          Produits
+        </li>
+        <li class="topcoat-list__item" ng-click="ShowStore()">
+          Magasins
+        </li>
+        <li class="topcoat-list__item" ng-click="showEquipment = !showEquipment; showProduct= !showEquipment; showStore= !showEquipment">
+          Equipements
+        </li>
+      </ul>
+    </div>
+    <div class="side-nav" ng-show="showNav">
+            <nav class="site">
+                <ul class="topcoat-list side-nav__list">
+                    <li class="topcoat-list__item side-nav__list__item is-active">
+                        <a href="#" class="side-nav__button" onclick="alert('Edit clicked')">
+                            <p><span class="menu-icon-edit"></span>Edit</p>
+                        </a>
+                    </li>
+                    <li class="topcoat-list__item side-nav__list__item is-active">
+                        <a href="#" class="side-nav__button" onclick="alert('Calendar clicked')">
+                            <p><span class="menu-icon-calendar"></span>Calendar</p>
+                        </a>
+                    </li>
+                    <li class="topcoat-list__item side-nav__list__item is-active">
+                        <a href="#" class="side-nav__button" onclick="alert('Tweet clicked')">
+                            <p><span class="menu-icon-twitter"></span>Tweet</p>
+                        </a>
+                    </li>
+                    <li class="topcoat-list__item side-nav__list__item is-active">
+                        <a href="#" class="side-nav__button" onclick="alert('Print clicked')">
+                            <p><span class="menu-icon-print"></span>Print</p>
+                        </a>
+                    </li>
+                    <li class="topcoat-list__item side-nav__list__item is-active">
+                        <a href="#" class="side-nav__button" onclick="alert('Feedack clicked')">
+                            <p><span class="menu-icon-feedback"></span>Feedback</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>    
+			
+
+    <div class="content-primary">
+        <div class="div-Accuei" ng-show="!showProduct && !showStore && !showEquipment">
+             <h2>Pixural EasyLab</h2>
+            <blockquote>
+                <p>Bienvenu sur EasyLab</p>
+                <hr>
+                <p>Nous vous souhaitons une agréable utilisation, si vous deviez rencontrer des problèmes d'utilisation, veuilliez SVP vous référer au manuel d'usage ou à la section Tutorial de votre menu !</p>
+            </blockquote>
+            <div>
+            <h4>Select a <strong>PhoneGap API </strong>to see it demonstrated.</h4>
+            <h4 class="help">See <strong>assets/www/apis/</strong> for JavaScript implementations of each API.</h4>
+             the variable product : {{showProduct}}, the variable store : {{showStore}}, the variable equipement : {{showEquipment}}
+            <p id="copyright">&copy; 2014 Pixural Mobile Developpement</p>
+            </div>		    					
+        </div>
+        <!-- View Product -->
+        <div class="div-Product" ng-show="showProduct">
+            <div ng-controller="controllerProduct">
+            <h2>Product</h2>
+            <blockquote>
+                <p>{{ "Gestion des produits" }}</p>
+            </blockquote>
+            <div >
+
+                <div class="topcoat-tab-bar full">
+                  <label class="topcoat-tab-bar__item">
+                    <input type="radio" name="tab-bar">
+                    <button class="topcoat-tab-bar__button full" ng-click="ShowAdd()">Ajouter</button>
+                  </label>
+                  <label class="topcoat-tab-bar__item">
+                    <input type="radio" name="tab-bar">
+                    <button class="topcoat-tab-bar__button full" ng-click="ShowList()">List</button>
+                  </label>
+                </div>                
+                
+                <div ng-show="showEdit">
+                    Créer un nouveaux Produit
+                    <form ng-submit="addProduct()">
+                        <br/>
+                        <div>
+                            <input id="Text_Name" class="topcoat-text-input full" type="text" placeholder="Name" />
+                            <br/><br/>
+                            <input id="Text_Identification" class="topcoat-text-input full" type="Text" placeholder="Identification" />
+                            <br/><br/>
+                            <input id="DateTime_lapsing" class="topcoat-text-input full"  type="date" />
+                            <br/><br/>
+                            <textarea id="Textarea_Description" placeholder="Description" class="topcoat-textarea full"></textarea>
+                            <br/><br/>
+                            <button class="topcoat-button" type="submit">Ajouté
+                                <span class="icomatic" style="color:#2255fa; font-size:25; line-height:2">plus</span>
+                            </button> 
+                            <button class="topcoat-button" ng-click="Clear()">Effacé
+                                <span class="icomatic" style="color:#2255fa; font-size:25; line-height:2">cancel</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div ng-show="showList">
+                    <ul>
+                        <li ng-repeat="product in products">
+                            <span>{{ product.Name }}</span>
+                            
+                        <button class="topcoat-button">
+                                <span class="icomatic" style="color:#2255fa; font-size:25; line-height:2">cancel</span>
+                        </button>    
+                                
+                            
+                        </li>
+                    </ul>
+                </div>
+                    
+             </div>	
+            </div>
+        </div>
+        <!-- View Store -->
+        <div class="div-Store" ng-show="showStore">
+            <div>
+            <h2>Magasin</h2>
+            <blockquote>
+                <p>{{ "Gestion des magasins" }}</p>
+            </blockquote>
+            <div >
+                <div><div class="topcoat-button--cta" onclick="">Add</div></div>
+                <div><div class="topcoat-button--cta" onclick="">List</div></div>	
+                
+                
+                <ul>
+                    <li >
+                        <span></span>
+                    </li>
+                </ul>
+                    
+             </div>	
+            </div>
+        </div>
+       
+
+
+
+    </div>
+	
+	<div class="footer">
+		<p>&copy; 2014 Pixural Mobile Developpement</p>
+	</div>	
+				
+  </body>
+</html>
+				
